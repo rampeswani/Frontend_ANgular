@@ -1,0 +1,74 @@
+<div class="register-container">
+  <form [formGroup]="register_form" (ngSubmit)="onSubmit()">
+    <h2>Register</h2>
+
+    <!-- Name -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" formControlName="name" type="text" />
+      <ng-container *ngIf="register_form.get('name') as nameControl">
+        <div class="error" *ngIf="nameControl.touched && nameControl.errors">
+          <div *ngIf="nameControl.errors['required']">Name is required.</div>
+          <div *ngIf="nameControl.errors['pattern']">Only letters and spaces allowed.</div>
+          <div *ngIf="nameControl.errors['minlength']">Name must be at least 3 characters long.</div>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Username -->
+     <div class="form-group">
+      <label for="user_name">User Name</label>
+      <input id="user_name" formControlName="user_name" type="text" />
+      <ng-container *ngIf="register_form.get('user_name') as usernameControl">
+        <div class="error" *ngIf="usernameControl.touched && usernameControl.errors">
+          <div *ngIf="usernameControl.errors['required']">User name is required.</div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="form-group">
+      <label for="user_name">Email</label>
+      <input id="user_name" formControlName="email" type="email" />
+      <ng-container *ngIf="register_form.get('email') as emailControl">
+        <div class="error" *ngIf="emailControl.touched && emailControl.errors">
+          <div *ngIf="emailControl.errors['required']">email is required.</div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-group">
+      <label for="user_name">Role</label>
+      <input id="user_name" formControlName="role" type="text" />
+      <ng-container *ngIf="register_form.get('role') as roleControl">
+        <div class="error" *ngIf="roleControl.touched && roleControl.errors">
+          <div *ngIf="roleControl.errors['required']">Role is required.</div>
+        </div>
+      </ng-container>
+    </div>
+    
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" formControlName="password" type="password" />
+      <ng-container *ngIf="register_form.get('password') as passwordControl">
+        <div class="error" *ngIf="passwordControl.touched && passwordControl.errors">
+          <div *ngIf="passwordControl.errors['required']">Password is required.</div>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="form-group">
+      <label for="confirm_password">Confirm Password</label>
+      <input id="confirm_password" formControlName="confirm_password" type="password" />
+      <ng-container *ngIf="register_form.get('confirm_password') as confirmControl">
+        <div class="error" *ngIf="confirmControl.touched && confirmControl.errors">
+          <div *ngIf="confirmControl.errors['required']">Confirm password is required.</div>
+          <div *ngIf="confirmControl.errors['mustMatch']">Passwords must match.</div>
+        </div>
+      </ng-container>
+    </div>
+
+    <button type="submit" [disabled]="register_form.invalid">Register</button>
+  </form>
+</div>

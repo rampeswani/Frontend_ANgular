@@ -1,0 +1,125 @@
+<!-- dashboard.component.html -->
+<div class="dashboard-container">
+  <!-- Horizontal Navbar -->
+  <header class="navbar">
+    <div class="navbar-left">
+      <h1 class="app-title">My Dashboard</h1>
+    </div>
+    <div class="navbar-right">
+      <span class="user-info">Welcome, {{ name }} ({{ role }})</span>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="main-layout">
+    <!-- Vertical Sidebar -->
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+          <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+          <li *ngIf="role === 'Admin'"><a routerLink="/admin" routerLinkActive="active">Admin Panel</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Content Area -->
+    <!-- Content Area -->
+<section class="content">
+  <router-outlet></router-outlet>
+
+  <form  class="upload-form">
+    <label for="fileInput" class="upload-label">Upload Document</label>
+    <input type="file" id="fileInput" class="upload-input"   (change)="onFileChange($event)" />
+    <br />
+    <button  (click)="onSubmit($event)" class="upload-button">Upload</button>
+  </form>
+</section>
+
+  </div>
+</div>
+
+<!-- dashboard.component.css -->
+<style>
+.dashboard-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e3a8a;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.app-title {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.user-info {
+  margin-right: 1rem;
+  font-weight: 500;
+}
+
+.logout-btn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+}
+
+.main-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #f3f4f6;
+  padding: 1rem;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  margin-bottom: 1rem;
+}
+
+.sidebar nav ul li a {
+  text-decoration: none;
+  color: #1f2937;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.sidebar nav ul li a.active,
+.sidebar nav ul li a:hover {
+  color: #2563eb;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  background-color: #ffffff;
+}
+</style>
