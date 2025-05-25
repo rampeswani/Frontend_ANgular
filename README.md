@@ -2,6 +2,23 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
 
+### Required Node Version
+
+This project uses **Node.js v16.17.0**.
+
+To automatically use the correct version, install [nvm](https://github.com/nvm-sh/nvm) and run:
+
+```bash
+nvm install
+nvm use
+
+
+### Install angular cli  - npm install -g @angular/cli@14.2.13
+
+## installing packages from node modules 
+run -
+npm install
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
